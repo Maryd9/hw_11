@@ -5,18 +5,11 @@ from selenium.webdriver.chrome.options import Options
 
 
 @pytest.fixture(scope="function", autouse=True)
-def open_browser():
-    browser.config.base_url = 'https://demoqa.com'
+def setup_browser():
     browser.config.window_width = 1366
     browser.config.window_height = 768
+    browser.config.base_url = 'https://demoqa.com'
 
-    yield
-
-    browser.quit()
-
-
-@pytest.fixture(scope="function", autouse=True)
-def setup_browser(request):
     options = Options()
     selenoid_capabilities = {
         "browserName": "chrome",
@@ -32,7 +25,7 @@ def setup_browser(request):
         options=options
     )
 
-    browser = Browser(Config(driver))
+    browser.config.driver = driver
 
     yield browser
 
