@@ -1,5 +1,6 @@
 .venv
 .idea
+.env
 
 #allure
 tests/allure_results
