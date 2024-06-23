@@ -1,3 +1,5 @@
+import time
+
 import tests.resources.resource
 from selene import browser, have, command
 from hw_11.data.user import User
@@ -38,7 +40,7 @@ class RegistrationFormPage:
         return self
 
     def _fill_gender(self, value):
-        self.gender_element.element_by(have.exact_text(value)).click()
+        self.gender_element.element_by(have.exact_text(value)).perform(command.js.scroll_into_view).click()
         return self
 
     def _fill_user_phone(self, value):
@@ -57,7 +59,7 @@ class RegistrationFormPage:
         return self
 
     def _fill_hobby(self, value):
-        self.hobby_element.element_by(have.exact_text(value)).click()
+        self.hobby_element.element_by(have.exact_text(value)).perform(command.js.scroll_into_view).click()
         return self
 
     def _fill_picture(self, file_name):
