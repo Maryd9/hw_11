@@ -1,2 +1,5 @@
 .venv
 .idea
+
+#allure
+tests/allure_results
